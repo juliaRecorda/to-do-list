@@ -35,10 +35,10 @@ const router = createRouter({
 })
 
 // router.beforeEach((to) => {
-//   const useUserStore = UserStore()
-//   const isLoginIn = useUserStore.user !== null;
-//   if (!isLoginIn && to.name !== "signIn" && to.name !== "signUp") {
-//     return {name: "signIn"}
-//   }
+// const useUserStore = UserStore()
+// const isLoginIn = useUserStore.user !== null;
+// if (!isLoginIn && to.name !== "signIn" && to.name !== "signUp") {
+// return {name: "signIn"}
+//  }
 // })
 export default router

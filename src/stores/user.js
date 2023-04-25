@@ -15,8 +15,8 @@ export default defineStore("user", {
         },
         async signUp(email, password) {
             const { user, error } = await supabase.auth.signUp({
-              email,
-              password,
+              email: email,
+              password: password
             });
             if (error) {
               throw error;
@@ -35,5 +35,5 @@ export default defineStore("user", {
           },
         },
       });
-// son correctas las funciones de signIn y signUp?       
+ 
           
