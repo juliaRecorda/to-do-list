@@ -2,10 +2,10 @@
 import { ref, defineComponent } from "vue"
 // import { supabase } from "../supabase/index" // comentado xk me da error
 import defineStore from "../stores/user.js"
-import { mapActions, mapState } from "pinia" // utilizar estas dos funciones para mapear la funcion signUp
-const userStore = defineStore();
-const { signUp } = mapActions(userStore, ["signUp"]); 
+//import { mapActions, mapState } from "pinia" // utilizar estas dos funciones para mapear la funcion signUp
 
+// const { signUp } = mapActions(userStore, ["signUp"]); 
+const userStore = defineStore();
 //conectar los inputs del formulario 
 let email = ref("")
 let password = ref("")
@@ -14,17 +14,15 @@ let password = ref("")
 //create Account function
 const createAccount = async () => {
   try {
-    await signUp(email.value, password.value);
+    await userStore.signUp(email.value, password.value);
     // Si la función signUp se ejecuta sin errores, significa que el usuario ha sido registrado correctamente en Supabase.
-    // Puedes añadir aquí cualquier código adicional que necesites después de que el usuario se haya registrado.
   } catch (error) {
     console.error(error);
     // Si la función signUp genera un error, lo estamos mostrando en la consola por ahora.
-    // Puedes añadir aquí cualquier código adicional que necesites en caso de que la función signUp genere un error.
   }
 };
-
 </script>
+
 
 <template>
     <div class="formBox app-container">
@@ -43,16 +41,9 @@ const createAccount = async () => {
     </div> -->
     <div class="buttonContainer">
         <button @click="createAccount">Sign Up</button>
+    </div>   
     </div>
-    </div>
-
 </template>
 
-<style>
-.formBox{
-    border: 2px;
-    width: 200px;
-}
-</style>
 
-
+<style></style>

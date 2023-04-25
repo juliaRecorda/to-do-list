@@ -1,22 +1,22 @@
 <script setup>
-import { ref } from "vue"
+import { ref, defineComponent } from "vue"
 import defineStore from "../stores/user.js"
-import { mapActions, mapState } from "pinia"
-// import { supabase } from "../supabase/index"
 
 //conectar los inputs del formulario 
+const userStore = defineStore();
+
 let email = ref("")
 let password = ref("")
 
-//login function
-function logIn(){
-    console.log("log in")
-}
-
-//create Account function
-function createAccount(){
-    console.log("create Account")
-}
+const logIn = async () => {
+  try {
+    await userStore.signIn(email.value, password.value);
+    // Si la función signUp se ejecuta sin errores, significa que el usuario ha sido registrado correctamente en Supabase.
+  } catch (error) {
+    console.error(error);
+    // Si la función signUp genera un error, lo estamos mostrando en la consola por ahora.
+  }
+};
 </script>
 
 <template>

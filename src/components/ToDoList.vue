@@ -5,7 +5,7 @@ import { mapActions, mapState } from "pinia"
 </script>
 
 <template>
-    <div class="app-container">
+    <div class="app-container" id="tasklist">
         <h1 class="app-header">TO DO LIST</h1>
         <div class="add-task">
             <input type="text" placeholder="Add New Task" class="task-input">
