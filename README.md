@@ -27,3 +27,18 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+## Dudas
+
+1. como hago el import de supabase en los componentes? o no se puede y siempre tiene que ser en un view? Ej linea 3 LogIn.vue => solo en store, no hace falta en views o components
+2. Son correctas las funciones de signIn y signUp de Stores => user.js    
+3. Las líneas que he añadido de import en los componentes de LogIn y SignUp son correctas? => si
+4. Como cojo la función definida en user.js signUp y la utilizo en el componente SignUp? => Si
+5. Cómo consigo validar la password? 
+6. por qué me da el error en la consola de Pinia? => si
+7. ¿Por qué no me deja ir a la Home y me redirige a auth/sign in? => ah xk no estoy authenticado => dejo comentado beforeEach para poder ir trabajando en el ToDoList hasta que no solucione el tema de authentication => si
+8. Los componentes tienen que tener la etiqueta <head> dentro de <template>?? => no hay que hacerlo 
+9. css: como subir el icono + al lado de "Add New Task"
+10. como hacer más grande el espacio para la basura
+11. Como hacer que el check rosa ocupe más dentro de la redondita?
