@@ -32,6 +32,7 @@ export default defineStore("user", {
         throw error;
       }
       this.user = data;
+      console.log(this.user)
     },
   },
 });

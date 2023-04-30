@@ -8,7 +8,7 @@ export default {
       newTaskTitle: "",
     }
   },
-  computed: {
+  computed: {  
     ...mapState(ToDoStore, ["taskList"] )
   },
   methods: {
