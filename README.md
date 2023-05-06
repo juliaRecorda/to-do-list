@@ -29,25 +29,13 @@ npm run build
 ```
 
 
-## Dudas
-
-1. De momento he dejado el usuario con el id puesto, no lo he sabido hacer dinámico
-5. Cómo consigo validar la password? 
-9. css: como subir el icono + al lado de "Add New Task"
-10. como hacer más grande el espacio para la basura
-11. Como hacer que el check rosa ocupe más dentro de la redondita?
+## Dudas finales
+1. por qué me sale la barra de scroll? Qué tengo que hacer más pequeño
+2. por qué cuando marco una task como completed pero hago refresh se me borra la info tanto de la interfaz como de supabase?
 
 
 
-Detallets
-1. interacciones buttons => done
-2. Al hacer click a sign up => llevar a tasks - done
-3. No tienes una cuenta? Sign up => done
-4. Scroll down => done
-5. Padding entre elementos del formulario - done
-6. Placeholders => done
-7. Responsive 
 
 
-Dudas
 
+con v-if v-else mire si tengo iniciado sesion - v else sign out 

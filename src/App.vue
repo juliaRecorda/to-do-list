@@ -1,20 +1,14 @@
-<script>
-import { RouterLink, RouterView } from "vue-router"
-import { mapActions } from "pinia"
-import UserStore from "./stores/user.js"
-export default {
-  name: "App",
-  components: {
-    RouterLink,
-    RouterView,
-  }, 
-  methods: {
-    ...mapActions(UserStore, ["fetchUser"])
-  },
-  async created() {
-    await this.fetchUser()
-  }
+<script setup>
+import { useRouter } from 'vue-router';
+import defineStore from "@/stores/user.js"
+
+const router = useRouter()
+const userStore = defineStore()
+const handleSignOut = async () => {
+  await userStore.signOut()
+  router.push({name: "signIn"})
 }
+
 </script>
 
 <template>
@@ -25,6 +19,7 @@ export default {
         <RouterLink to="/" class="router-link">To Do List</RouterLink>
         <RouterLink to="/auth/sign-in" class="router-link">Sign In</RouterLink>
         <RouterLink to="/auth/sign-up" class="router-link">Sign Up</RouterLink>
+        <button @click="handleSignOut" class="router-link router-button">Sign Out</button>
       </nav>
     </div>
   </header>
@@ -44,9 +39,7 @@ export default {
 }
 .navBar{
   display: flex;
-  flex-wrap: wrap;
   width: 50vw;
-  /* background-color: white; */
   justify-content: flex-start;
 }
 
@@ -61,8 +54,48 @@ export default {
   padding-left: 40px;
   color: white;
 }
+
+.router-butoon
 .logo{
   width: 30px;
   height: 30px;
+}
+
+
+@media (max-width: 768px){
+
+
+  .navBar{
+    justify-content: space-around ;
+    width: 60vw;
+
+  }
+
+  .router-link{
+    padding-left: 30px;
+  }
+
+}
+
+@media (max-width: 505px){
+  .router-link{
+    font-size: 1rem;
+  }
+
+}
+
+
+@media (max-width: 480px){
+
+  .navBar{
+    justify-content: space-around ;
+    width: 55vw;
+
+  }
+
+  .router-link{
+    padding-left: 20px;
+  }
+	
 }
 </style>

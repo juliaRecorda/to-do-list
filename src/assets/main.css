@@ -18,11 +18,9 @@ body {
 	display: flex;
 	justify-content: center;
 	background-image: url(../assets/pexels-alexander-kovalev-2847648.jpg);
-	background-repeat: repeat;
+	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: "DM Sans", sans-serif;
-	overflow: scroll;
-
 }
 
 input{
@@ -35,7 +33,6 @@ ul{
 }
 
 .app-container{
-	/* max-width: 480px; */
 	width: 50vw;
 	max-height: 100%;
 	margin-left: 25vw;
@@ -75,6 +72,12 @@ ul{
 	color: rgba(89,74,97,255);
 }
 
+.task-list{
+	max-height: 500px;
+	overflow-y: scroll;
+	padding-right: 30px;
+}
+
 .task-list-item {
 	background-color: rgba(255, 255, 255, 0.7);
 	display: flex;
@@ -84,10 +87,10 @@ ul{
 	margin-bottom: 12px;
 }
 
-.task-list-item input:checked + span {
+/* .task-list-item input:checked + span {
 	color: rgba(89,74,97,255);
 	text-decoration: line-through rgba(89,74,97,255);
-}
+} */
 
 .task-list-item-label {
 	display: flex;
@@ -138,3 +141,13 @@ ul{
 	color: rgba(89,74,97,255);
 	font-weight: bold;
   }
+
+
+  @media (max-width: 768px){
+
+	.app-container{
+		width: 70vw;
+	}
+
+  }
+
