@@ -50,9 +50,9 @@ const completeTask = (task) => {
 				<label class="task-list-item-label">
 					<input type="checkbox" v-model="task.completed" @change="completeTask(task)">
 				</label>
-				<span v-if="!task.editing" @dblclick="task.editing = true" :class="{ completed: task.completed }" contenteditable>{{ task.title }}</span>
+				<span v-if="!task.editing" @dblclick="task.editing = true" :class="{ completed: task.completed, editing: task.editing }" contenteditable>{{ task.title }}</span>
 				<input class="task-created" type="text" v-if="task.editing" v-model="task.title" @keydown.enter="editTask(task)">
-				<button v-if="task.editing" @click="editTask(task)">Save</button>
+				<button class="save-btn" v-if="task.editing" @click="editTask(task)">Save</button>
 				<button @click="deleteTask(task.id)" class="delete-btn" title="Delete Task"></button>
 			</li>
 		</ul>
@@ -70,6 +70,8 @@ const completeTask = (task) => {
     color: rgba(89, 74, 97, 255);
     text-decoration: line-through rgba(89, 74, 97, 255);
   }
+
+
 
 .submit-task {
 	width: 25px;
@@ -127,6 +129,11 @@ const completeTask = (task) => {
 .task-list-item input:checked {
 	background-size: 25px;
 	border: 1px solid var(--checkbox-color);
+}
+
+
+.save-btn{
+	width: 40px;
 }
 
 
