@@ -10,7 +10,6 @@ export default {
 
 <template>
   <main>
-    <h1>Auth View</h1>
     <RouterView/>
   </main>
 </template>

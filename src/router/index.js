@@ -11,6 +11,9 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      meta: {
+        requiresAuth: true,
+      },
       component: HomeView
     },
     {
@@ -28,17 +31,26 @@ const router = createRouter({
           name: "signUp",
           component: SignUpView
         },
-
       ]
     },
   ]
 })
 
-// router.beforeEach((to) => {
-//   const useUserStore = UserStore()
-//   const isLoginIn = useUserStore.user !== null;
-//   if (!isLoginIn && to.name !== "signIn" && to.name !== "signUp") {
-//     return {name: "signIn"}
-//   }
-// })
+router.beforeEach(async(to) => {
+  const store = UserStore()
+
+  if (store.user === undefined) {
+    await store.fetchUser()
+  }
+
+  console.log('beforeEach')
+  console.log(store.user)
+  
+  if (to.meta.requiresAuth && store.user === null) {
+    return { name: 'signIn' }
+  }
+  if ((to.name === 'signIn' || to.name === 'signUp') && store.user !== null) {
+    return { name: 'home' }
+  }
+})
 export default router

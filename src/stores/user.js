@@ -3,37 +3,53 @@
 import { defineStore } from "pinia";
 import supabase from "../supabase"
 export default defineStore("user", {
-    state:() => {
-        return {
-            user:null,
-        }
-    }, 
-    actions: {
-        async fetchUser(){
-            const { data: { user } } = await supabase.auth.getUser()
-            this.user = user
-        },
-        async signUp(email, password) {
-            const { user, error } = await supabase.auth.signUp({
-              email,
-              password,
-            });
-            if (error) {
-              throw error;
-            }
-            this.user = user;
-          },
-          async signIn(email, password) {
-            const { user, error } = await supabase.auth.signIn({
-              email,
-              password,
-            });
-            if (error) {
-              throw error;
-            }
-            this.user = user;
-          },
-        },
+  state: () => {
+    return {
+      user: undefined,
+    }
+  },
+  actions: {
+    async fetchUser() {
+      const { data: { user } } = await supabase.auth.getUser()
+      this.user = user
+    },
+    async signUp(email, password) {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
       });
-// son correctas las funciones de signIn y signUp?       
-          
+      if (error) {
+        throw error;
+      }
+      this.user = data;
+    },
+    async signIn(email, password) {
+      const { data: { user }, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (error) {
+        throw error;
+      }
+      this.user = user;
+      console.log(this.user)
+    },
+    async signOut(){
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        throw error;
+      }
+      this.user = null;
+    }
+
+  },
+});
+
+
+
+
+
+
+
+
+

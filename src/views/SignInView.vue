@@ -1,11 +1,14 @@
-<script>
-export default {
-    name: "SignInView"
-}
+<script setup>
+import LogIn from "../components/LogIn.vue"
 </script>
 
 <template>
   <main>
-    <h1>Sign in View</h1>
+    <LogIn/>
   </main>
 </template>
+
+
+<style>
+
+</style>
