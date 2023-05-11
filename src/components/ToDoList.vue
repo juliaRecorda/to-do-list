@@ -48,10 +48,10 @@ const completeTask = (task) => {
 		<ul class="task-list">
 			<li v-for="task in tasks" :key="task.id" class="task-list-item">
 				<label class="task-list-item-label">
-					<input type="checkbox" v-model="task.completed" @change="completeTask(task)">
+					<input :class="{ completed: task.is_complete}" type="checkbox" v-model="task.completed" @change="completeTask(task)">
 				</label>
-				<span v-if="!task.editing" @dblclick="task.editing = true" :class="{ completed: task.completed, editing: task.editing }" contenteditable>{{ task.title }}</span>
-				<input class="task-created" type="text" v-if="task.editing" v-model="task.title" @keydown.enter="editTask(task)">
+				<span v-if="!task.editing" @dblclick="task.editing = true" id="span-not-edited" :class="{ completed: task.is_complete, editing: task.editing }" contenteditable>{{ task.title }}</span>
+				<input class="task-created" id="test" type="text" v-if="task.editing" v-model="task.title" @keydown.enter="editTask(task)">
 				<button class="save-btn" v-if="task.editing" @click="editTask(task)">Save</button>
 				<button @click="deleteTask(task.id)" class="delete-btn" title="Delete Task"></button>
 			</li>
@@ -72,6 +72,23 @@ const completeTask = (task) => {
   }
 
 
+  #test{
+	width: 100px;
+	border-radius: 0%;
+	border: 0px;
+	padding-left: 5px;
+	color: rgba(89, 74, 97, 255);
+  }
+
+  .save-btn{
+	background-color: rgba(238,201,148,255);
+	color: rgba(89,74,97,255);
+	border: 0px;
+	height: 20px;
+	margin-top: 4px;
+	
+
+  }
 
 .submit-task {
 	width: 25px;
@@ -87,6 +104,12 @@ const completeTask = (task) => {
 	border-radius: 50%;
 	cursor: pointer;
 	box-shadow: 0 0 12px 0 var(--add-button-shadow);
+}
+
+
+.test{
+	background-color: red;
+	width: 100px;
 }
 
 .submit-task:active {
@@ -126,16 +149,19 @@ const completeTask = (task) => {
 	box-shadow: 0 0 0 3px var(--checkbox-shadow);
 }
 
-.task-list-item input:checked {
+.task-list-item input.completed {
 	background-size: 25px;
 	border: 1px solid var(--checkbox-color);
+}
+
+#span-not-edited{
+	outline: none;
 }
 
 
 .save-btn{
 	width: 40px;
 }
-
 
 
 .delete-btn {
@@ -150,5 +176,6 @@ const completeTask = (task) => {
 	background-position: center;
 	cursor: pointer;
 	border-radius: 50%;
+	border: 0px;
 }
 </style>

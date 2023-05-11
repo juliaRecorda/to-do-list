@@ -1,14 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import defineStore from "@/stores/user.js"
-// import { computed } from "vue"
-// import useUserStore from "@/stores/user.js"
-
-
-
-// const isUserAuthenticated = computed(() => !!store.state.user.user)
-// const store = useUserStore
-// const user = computed(() => store.state.user.user)
 
 const router = useRouter()
 const userStore = defineStore()
@@ -26,9 +18,9 @@ const handleSignOut = async () => {
     <div class="wrapper">
       <nav class="navBar">
         <RouterLink  to="/" class="router-link">To Do List</RouterLink>
-        <RouterLink to="/auth/sign-in" class="router-link">Sign In</RouterLink>
-        <RouterLink  to="/auth/sign-up" class="router-link">Sign Up</RouterLink>
-        <button  @click="handleSignOut" class="router-link router-button">Sign Out</button>
+        <RouterLink v-if="!userStore.user" to="/auth/sign-in" class="router-link">Sign In</RouterLink>
+        <RouterLink  v-if="!userStore.user" to="/auth/sign-up" class="router-link">Sign Up</RouterLink>
+        <button v-if="userStore.user" @click="handleSignOut" class="router-link router-button">Sign Out</button>
       </nav>
     </div>
   </header>
@@ -78,7 +70,7 @@ const handleSignOut = async () => {
 
 
   .navBar{
-    justify-content: space-around ;
+    justify-content: flex-start ;
     width: 60vw;
 
   }
