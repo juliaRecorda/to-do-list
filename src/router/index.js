@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AuthView from "../views/AuthView.vue"
-import SignInView from "../views/signInView.vue"
-import SignUpView from "../views/signUpView.vue"
+import SignInView from "../views/SignInView.vue"
+import SignUpView from "../views/SignUpView.vue"
 import UserStore from "../stores/user.js"
 
 const router = createRouter({
