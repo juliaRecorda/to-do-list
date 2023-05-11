@@ -5,7 +5,7 @@ import supabase from "../supabase"
 export default defineStore("user", {
   state: () => {
     return {
-      user: null,
+      user: undefined,
     }
   },
   actions: {
@@ -24,15 +24,32 @@ export default defineStore("user", {
       this.user = data;
     },
     async signIn(email, password) {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { data: { user }, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
       if (error) {
         throw error;
       }
-      this.user = data;
+      this.user = user;
+      console.log(this.user)
     },
+    async signOut(){
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        throw error;
+      }
+      this.user = null;
+    }
+
   },
 });
+
+
+
+
+
+
+
+
 
